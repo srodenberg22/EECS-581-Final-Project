@@ -1,11 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://yicge48108e0"]
+[gd_scene load_steps=3 format=3 uid="uid://yicge48108e0"]
 
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://67q43j70v2jc" path="res://scenes/asteroid.tscn" id="2_yqjtg"]
 
 [node name="Game" type="Node2D"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(0, -1)
+[node name="Ship" parent="." instance=ExtResource("1_uwrxv")]
+safe_margin = 0.008
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
+
+[node name="Rock" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(45, -32)
