@@ -2,3 +2,6 @@ res://scenes/game.tscn
 res://scripts/event_controller.gd
 res://scripts/game_controller.gd
 res://scripts/golden_asteroid.gd
+res://scripts/home_base.gd
+res://scripts/package.gd
+res://scripts/canvas_layer.gd
