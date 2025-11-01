@@ -1,0 +1,4 @@
+res://scenes/game.tscn
+res://scripts/event_controller.gd
+res://scripts/game_controller.gd
+res://scripts/golden_asteroid.gd
