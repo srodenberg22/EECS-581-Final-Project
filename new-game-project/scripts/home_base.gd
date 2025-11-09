@@ -17,3 +17,5 @@ func _process(delta):
 			GameController.package_return(GameController.asteroid_collected)
 			print("package returned!")
 			
+		SaveManager.save_game($".".global_position, GameController.package_collected, GameController.asteroid_collected)
+		
