@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://yicge48108e0"]
+[gd_scene load_steps=15 format=3 uid="uid://yicge48108e0"]
 
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://cpx37ymr8sl4r" path="res://scenes/camera_2d.gd" id="2_vtaks"]
 [ext_resource type="PackedScene" uid="uid://67q43j70v2jc" path="res://scenes/asteroid.tscn" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://c8c7a6lpebb2q" path="res://scenes/golden_asteroid.tscn" id="4_gee14"]
 [ext_resource type="Script" uid="uid://b8i7e8cph71ra" path="res://scripts/home_base.gd" id="5_gee14"]
@@ -38,10 +39,11 @@ position = Vector2(-3, -6)
 [node name="Ship" parent="." instance=ExtResource("1_uwrxv")]
 z_index = 3
 safe_margin = 0.008
-force = null
-torque = null
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+ignore_rotation = false
+script = ExtResource("2_vtaks")
+target = NodePath("../Ship")
 
 [node name="Rock" parent="." instance=ExtResource("2_yqjtg")]
 position = Vector2(45, -32)

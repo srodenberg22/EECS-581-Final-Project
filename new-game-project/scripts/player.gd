@@ -28,14 +28,14 @@ func respawn_to_base():
 	
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if Input.is_action_pressed("ui_left") and not(Input.is_action_pressed("ui_right")) :
+	if Input.is_action_pressed("turn_left") and not(Input.is_action_pressed("turn_right")) :
 		rotateSpeed -= torque*delta
-	elif Input.is_action_pressed("ui_right") and not(Input.is_action_pressed("ui_left")):
+	elif Input.is_action_pressed("turn_right") and not(Input.is_action_pressed("turn_left")):
 		rotateSpeed += torque*delta
 	
 	rotation += rotateSpeed
 		
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("thrust"):
 		velocity += Vector2.UP.rotated(rotation)*force*delta
 		rocket.play("thrust")
 	else:
