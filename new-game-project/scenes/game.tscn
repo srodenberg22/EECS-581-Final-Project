@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://yicge48108e0"]
+[gd_scene load_steps=17 format=3 uid="uid://yicge48108e0"]
 
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://cpx37ymr8sl4r" path="res://scenes/camera_2d.gd" id="2_vtaks"]
@@ -10,6 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://ch4ehecrfmcxf" path="res://assets/package.png" id="8_vtaks"]
 [ext_resource type="Script" uid="uid://dmbeirobembkd" path="res://scripts/canvas_layer.gd" id="9_0tnpc"]
 [ext_resource type="Script" uid="uid://dfnmkp1y727is" path="res://scripts/save_manager.gd" id="9_vtaks"]
+[ext_resource type="Texture2D" uid="uid://bjgoy55cf5n20" path="res://assets/starBackground.png" id="11_kvpfn"]
+[ext_resource type="Script" uid="uid://dwoyettx8ey15" path="res://scenes/background.gd" id="12_dinhu"]
 
 [sub_resource type="GDScript" id="GDScript_kvpfn"]
 script/source = "extends Sprite2D
@@ -105,7 +107,7 @@ position = Vector2(-24, 75)
 shape = SubResource("RectangleShape2D_dinhu")
 
 [node name="Golden Asteroid" parent="." instance=ExtResource("4_gee14")]
-position = Vector2(-320, -90)
+position = Vector2(-357, -119)
 
 [node name="Golden Asteroid2" parent="." instance=ExtResource("4_gee14")]
 position = Vector2(-126, -152)
@@ -115,6 +117,14 @@ position = Vector2(-151, 22)
 
 [node name="SaveManager" type="Node2D" parent="."]
 script = ExtResource("9_vtaks")
+
+[node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("camera", "target")]
+z_index = -1
+scale = Vector2(5, 5)
+texture = ExtResource("11_kvpfn")
+script = ExtResource("12_dinhu")
+camera = NodePath("../Camera2D")
+target = NodePath("../Ship")
 
 [connection signal="body_entered" from="HomeBase/Base" to="HomeBase" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="HomeBase/Base" to="HomeBase" method="_on_area_2d_body_exited"]

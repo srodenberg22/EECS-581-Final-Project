@@ -2,7 +2,6 @@ extends Camera2D
 var zoomSpeed = 5
 
 @export var target: Node2D
-var followSpeed = 5.0
 var spin = true
 
 func _process(delta):
