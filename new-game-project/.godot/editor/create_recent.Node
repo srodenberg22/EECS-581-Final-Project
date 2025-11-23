@@ -1,5 +1,12 @@
-Sprite2D
 Node2D
+ColorRect
+AnimationPlayer
+Button
+VBoxContainer
+PanelContainer
+TextureRect
+Control
+Sprite2D
 Label
 CanvasLayer
 CollisionShape2D
