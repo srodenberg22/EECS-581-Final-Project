@@ -2,16 +2,14 @@ extends Camera2D
 var zoomSpeed = 5
 
 @export var target: Node2D
-var spin = true
+var spin = false
 
 func _process(delta):
 	
-	#check for target
+
 	if target:
-		#move to keep up
 		position = target.global_position
 
-		#track wether the player should spin
 		if spin:
 			rotation = target.rotation
 

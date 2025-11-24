@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://yicge48108e0"]
+[gd_scene load_steps=22 format=3 uid="uid://yicge48108e0"]
 
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://cpx37ymr8sl4r" path="res://scenes/camera_2d.gd" id="2_vtaks"]
@@ -8,11 +8,25 @@
 [ext_resource type="Texture2D" uid="uid://by6xhbsgohdnw" path="res://assets/home_base.png" id="5_iywne"]
 [ext_resource type="PackedScene" uid="uid://bw46yhhpv1dcv" path="res://scenes/pause_menu.tscn" id="5_kvuet"]
 [ext_resource type="Script" uid="uid://g6jnubso3pr4" path="res://scripts/package.gd" id="7_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://bpb6kkr30gjqp" path="res://assets/pointer.png" id="7_ca42v"]
+[ext_resource type="Script" uid="uid://yf1igl8jd20y" path="res://scripts/homebase_point.gd" id="8_ca42v"]
+[ext_resource type="Texture2D" uid="uid://s0bu5f3ywa3s" path="res://assets/minimap_t.png" id="8_rysoc"]
 [ext_resource type="Texture2D" uid="uid://ch4ehecrfmcxf" path="res://assets/package.png" id="8_vtaks"]
 [ext_resource type="Script" uid="uid://dmbeirobembkd" path="res://scripts/canvas_layer.gd" id="9_0tnpc"]
 [ext_resource type="Script" uid="uid://dfnmkp1y727is" path="res://scripts/save_manager.gd" id="9_vtaks"]
 [ext_resource type="Texture2D" uid="uid://bjgoy55cf5n20" path="res://assets/starBackground.png" id="11_kvpfn"]
 [ext_resource type="Script" uid="uid://dwoyettx8ey15" path="res://scenes/background.gd" id="12_dinhu"]
+
+[sub_resource type="GDScript" id="GDScript_rysoc"]
+script/source = "extends SubViewport
+
+func _ready():
+	var main_world_2d = get_tree().root.world_2d
+	var minimap_viewport = get_node(\"MinimapContainer/MinimapViewport\")
+	
+	if minimap_viewport:
+		minimap_viewport.world_2d = main_world_2d
+"
 
 [sub_resource type="GDScript" id="GDScript_kvpfn"]
 script/source = "extends Sprite2D
@@ -6389,6 +6403,43 @@ offset_top = -282.0
 offset_right = -361.0
 offset_bottom = -259.0
 text = "Asteroid Collected: False"
+
+[node name="MinimapContainer" type="SubViewportContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -256.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="MiniMapViewport" type="SubViewport" parent="CanvasLayer/MinimapContainer"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+script = SubResource("GDScript_rysoc")
+
+[node name="MiniMapCamera" type="Camera2D" parent="CanvasLayer/MinimapContainer/MiniMapViewport"]
+position = Vector2(194, -120)
+zoom = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/MinimapContainer" node_paths=PackedStringArray("player", "respawn_point", "minimap_container")]
+position = Vector2(144, 42)
+texture = ExtResource("7_ca42v")
+script = ExtResource("8_ca42v")
+player = NodePath("../../../Ship")
+respawn_point = NodePath("../../../HomeBase/RespawnPoint")
+minimap_container = NodePath("..")
+
+[node name="MiniMapDisplay" type="TextureRect" parent="CanvasLayer/MinimapContainer"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+texture = ExtResource("8_rysoc")
+stretch_mode = 4
 
 [node name="HomeBase" type="Node2D" parent="."]
 position = Vector2(359, -145)
