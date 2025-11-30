@@ -1,4 +1,5 @@
 extends Node
+class_name Package
 
 var player_in_body = false
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://yicge48108e0"]
+[gd_scene load_steps=23 format=3 uid="uid://yicge48108e0"]
 
 [ext_resource type="PackedScene" uid="uid://be8qbmt0fe144" path="res://scenes/player.tscn" id="1_uwrxv"]
 [ext_resource type="Script" uid="uid://cpx37ymr8sl4r" path="res://scenes/camera_2d.gd" id="2_vtaks"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bpb6kkr30gjqp" path="res://assets/pointer.png" id="7_ca42v"]
 [ext_resource type="Script" uid="uid://yf1igl8jd20y" path="res://scripts/homebase_point.gd" id="8_ca42v"]
 [ext_resource type="Texture2D" uid="uid://s0bu5f3ywa3s" path="res://assets/minimap_t.png" id="8_rysoc"]
+[ext_resource type="Script" uid="uid://csj3o2la24m7x" path="res://scenes/pointing_to_package.gd" id="8_ssvqc"]
 [ext_resource type="Texture2D" uid="uid://ch4ehecrfmcxf" path="res://assets/package.png" id="8_vtaks"]
 [ext_resource type="Script" uid="uid://dmbeirobembkd" path="res://scripts/canvas_layer.gd" id="9_0tnpc"]
 [ext_resource type="Script" uid="uid://dfnmkp1y727is" path="res://scripts/save_manager.gd" id="9_vtaks"]
@@ -3301,6 +3302,26 @@ position = Vector2(24461, -9046.002)
 rotation = -2.0371437
 scale = Vector2(4.479253, 4.479253)
 
+[node name="Rock1274" parent="All Rocks" instance=ExtResource("2_yqjtg")]
+position = Vector2(26988.002, -10035.001)
+rotation = -2.0371437
+scale = Vector2(4.479253, 4.479253)
+
+[node name="Rock1275" parent="All Rocks" instance=ExtResource("2_yqjtg")]
+position = Vector2(27655.002, -7616)
+rotation = -2.0371437
+scale = Vector2(4.479253, 4.479253)
+
+[node name="Rock1276" parent="All Rocks" instance=ExtResource("2_yqjtg")]
+position = Vector2(25498.002, -11585)
+rotation = -2.0371437
+scale = Vector2(4.479253, 4.479253)
+
+[node name="Rock1277" parent="All Rocks" instance=ExtResource("2_yqjtg")]
+position = Vector2(23340.998, -12823.998)
+rotation = -2.0371437
+scale = Vector2(4.479253, 4.479253)
+
 [node name="Rock413" parent="All Rocks" instance=ExtResource("2_yqjtg")]
 position = Vector2(29751.004, 6410.998)
 rotation = -2.0371437
@@ -6427,12 +6448,20 @@ script = SubResource("GDScript_rysoc")
 position = Vector2(194, -120)
 zoom = Vector2(4, 4)
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/MinimapContainer" node_paths=PackedStringArray("player", "respawn_point", "minimap_container")]
+[node name="Pointing to Base" type="Sprite2D" parent="CanvasLayer/MinimapContainer" node_paths=PackedStringArray("player", "respawn_point", "minimap_container")]
 position = Vector2(144, 42)
 texture = ExtResource("7_ca42v")
 script = ExtResource("8_ca42v")
 player = NodePath("../../../Ship")
 respawn_point = NodePath("../../../HomeBase/RespawnPoint")
+minimap_container = NodePath("..")
+
+[node name="Pointing to Package" type="Sprite2D" parent="CanvasLayer/MinimapContainer" node_paths=PackedStringArray("player", "respawn_point", "minimap_container")]
+position = Vector2(144, 42)
+texture = ExtResource("7_ca42v")
+script = ExtResource("8_ssvqc")
+player = NodePath("../../../Ship")
+respawn_point = NodePath("../../../Package")
 minimap_container = NodePath("..")
 
 [node name="MiniMapDisplay" type="TextureRect" parent="CanvasLayer/MinimapContainer"]
@@ -6463,7 +6492,7 @@ shape = SubResource("RectangleShape2D_p57ef")
 position = Vector2(-366, 153)
 
 [node name="Package" type="Node2D" parent="."]
-position = Vector2(-436, 119)
+position = Vector2(26993, -13083)
 script = ExtResource("7_0tnpc")
 
 [node name="Sprite2D" type="Sprite2D" parent="Package"]
@@ -6477,14 +6506,171 @@ texture = ExtResource("8_vtaks")
 position = Vector2(36, 45)
 shape = SubResource("RectangleShape2D_dinhu")
 
-[node name="Golden Asteroid" parent="." instance=ExtResource("4_gee14")]
-position = Vector2(-271, -109)
+[node name="Collectible Asteroids" type="Node2D" parent="."]
 
-[node name="Golden Asteroid2" parent="." instance=ExtResource("4_gee14")]
-position = Vector2(-410, 67)
+[node name="Golden Asteroid" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(-499, 897)
 
-[node name="Golden Asteroid3" parent="." instance=ExtResource("4_gee14")]
-position = Vector2(-151, 22)
+[node name="Golden Asteroid44" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(1023, 348)
+
+[node name="Golden Asteroid45" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(2010, 1347)
+
+[node name="Golden Asteroid2" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(753, 7148)
+
+[node name="Golden Asteroid40" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(4579, 11839)
+
+[node name="Golden Asteroid3" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(9010, 3493)
+
+[node name="Golden Asteroid31" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(9083, 12604)
+
+[node name="Golden Asteroid32" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(15570, 8741)
+
+[node name="Golden Asteroid33" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(21328, 11802)
+
+[node name="Golden Asteroid34" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(23150, 6335)
+
+[node name="Golden Asteroid35" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(20744.998, -3504.998)
+rotation = -0.43937254
+
+[node name="Golden Asteroid36" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(13383, -11742)
+rotation = -0.43937254
+
+[node name="Golden Asteroid37" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(-8047, -14512)
+rotation = -0.43937254
+
+[node name="Golden Asteroid38" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(-22115, -225)
+rotation = -0.43937254
+
+[node name="Golden Asteroid39" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(-20803, 15009.001)
+rotation = -0.43937254
+
+[node name="Golden Asteroid4" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(1357, -1438)
+
+[node name="Golden Asteroid5" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(-9789, 1132)
+
+[node name="Golden Asteroid18" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(-114, -176)
+
+[node name="Golden Asteroid21" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(-1104, -769)
+
+[node name="Golden Asteroid22" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(15860, 3207)
+
+[node name="Golden Asteroid23" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(13474, 14207)
+rotation = -1.9906914
+
+[node name="Golden Asteroid24" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(28706, 3711)
+rotation = 0.08522701
+
+[node name="Golden Asteroid25" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(23586, -7169)
+rotation = 0.08522701
+
+[node name="Golden Asteroid26" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(5538, -13569)
+rotation = 0.08522701
+
+[node name="Golden Asteroid27" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(-22622, -5761.001)
+rotation = 0.08522701
+
+[node name="Golden Asteroid28" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(-12766, 12414.999)
+rotation = 0.08522701
+
+[node name="Golden Asteroid29" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(546, 18431)
+rotation = 0.08522701
+
+[node name="Golden Asteroid30" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(-19934, 4991)
+rotation = 0.08522701
+
+[node name="Golden Asteroid19" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(-6818, 3407)
+rotation = -1.2449231
+
+[node name="Golden Asteroid20" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(7573, 5802)
+rotation = -1.2449231
+
+[node name="Golden Asteroid17" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(-1556, -5156)
+
+[node name="Golden Asteroid6" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(-8369, 17784)
+rotation = -0.7976806
+
+[node name="Golden Asteroid7" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(212.99988, 3835)
+rotation = -0.7976806
+
+[node name="Golden Asteroid8" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(-4420.0005, 10739)
+rotation = -0.7976806
+
+[node name="Golden Asteroid9" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(4300, 6935)
+rotation = -3.6431606
+
+[node name="Golden Asteroid10" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(8882, 6133.0005)
+rotation = -3.6431606
+
+[node name="Golden Asteroid11" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(5602, -1884.9995)
+rotation = -3.6431606
+
+[node name="Golden Asteroid41" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(4244, -9549)
+rotation = -3.6431606
+
+[node name="Golden Asteroid42" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(-7301, -8967)
+rotation = -3.6431606
+
+[node name="Golden Asteroid43" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(-15450, -10325)
+rotation = -3.6431606
+
+[node name="Golden Asteroid12" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(-4302, -1348.0002)
+rotation = -3.6431606
+
+[node name="Golden Asteroid13" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(-9279.001, 7509.001)
+rotation = -3.6431606
+
+[node name="Golden Asteroid15" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(-8836.001, -3079.999)
+rotation = -3.6431606
+
+[node name="Golden Asteroid16" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(11699.001, -4464.0005)
+rotation = -3.6431606
+
+[node name="Golden Asteroid14" parent="Collectible Asteroids" instance=ExtResource("4_gee14")]
+position = Vector2(-13277, -3542.9995)
+rotation = -3.2808337
 
 [node name="SaveManager" type="Node2D" parent="."]
 script = ExtResource("9_vtaks")
