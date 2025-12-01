@@ -23,3 +23,5 @@ func _process(delta):
 	
 	if zoomDirection != 1:
 		zoom = zoom * Vector2.ONE * ( pow(zoomDirection, zoomSpeed) )
+		zoom.x = clamp(zoom.x, 0.1, 20.0)
+		zoom.y = clamp(zoom.y, 0.1, 20.0)

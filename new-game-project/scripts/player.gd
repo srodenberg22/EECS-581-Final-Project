@@ -6,6 +6,8 @@ extends CharacterBody2D
 var rotateSpeed = 0
 @onready var rocket: AnimatedSprite2D = $AnimatedSprite2D
 @onready var respawn_point = get_tree().get_current_scene().get_node("HomeBase/RespawnPoint")
+@onready var rocketSound: AudioStreamPlayer = $RocketSounds
+@onready var crash: AudioStreamPlayer = $Crash
 
 func _ready():
 	var data = SaveManager.load_game()
@@ -27,6 +29,7 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if Input.is_action_pressed("turn_left") and not(Input.is_action_pressed("turn_right")) :
 		rotateSpeed -= torque*delta
+		
 	elif Input.is_action_pressed("turn_right") and not(Input.is_action_pressed("turn_left")):
 		rotateSpeed += torque*delta
 	
@@ -35,11 +38,17 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("thrust"):
 		velocity += Vector2.UP.rotated(rotation)*force*delta
 		rocket.play("thrust")
+		if not rocketSound.playing:
+			rocketSound.play()
 	else:
 		rocket.play("default")
+		if  rocketSound.playing:
+			rocketSound.stop()	
+		
 
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		print("Collision Detected, respawning...")
+		crash.play()
 		respawn_to_base()
 			
